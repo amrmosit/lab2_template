@@ -24,3 +24,17 @@ class Instructor (User):
                 "Is Full time: " + str(self.self.full_time) + ", " + \
                 "Total learners: " + str(self.total_learners)
         
+# create a Course model which has a Many-To-Many relationship to Instructor model, defined
+# by the reference field instructors
+# Course model
+class Course (models.Model):
+    name = models.CharField(null = False, max_length=30, default='online course')
+    description = models.CharField(max_length=500)
+
+    # Many-to-Many relationship to Instructor Model
+    instructors = models.ManyToManyField(Instructor)
+
+    # Create a toString method for object string representation
+    def __str__(self):
+        return "Name: " + self.name + ", " + \
+                "Description: " + self.description
