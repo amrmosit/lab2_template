@@ -21,9 +21,36 @@ class Instructor (User):
     def __str__(self):
         return "First name: " + self.first_name + ", " + \
                 "Last name: " + self.last_name + ", " + \
-                "Is Full time: " + str(self.self.full_time) + ", " + \
+                "Is Full time: " + str(self.full_time) + ", " + \
                 "Total learners: " + str(self.total_learners)
-        
+
+# Learner model
+class Learner(User):
+    STUDENT = 'student'
+    DEVELOPER = 'developer'
+    DATA_SCIENTIST = 'data_scientist'
+    DATABASE_ADMIN = 'dba'
+    OCCUPATION_CHOICES = [
+        (STUDENT, 'Student'),
+        (DEVELOPER, 'Developer'),
+        (DATA_SCIENTIST, 'Data Scientist'),
+        (DATABASE_ADMIN, 'Database Admin')
+    ]
+    occupation = models.CharField(
+        null=False,
+        max_length=20,
+        choices=OCCUPATION_CHOICES,
+        default=STUDENT
+    )
+    social_link = models.URLField(max_length=200)
+    
+    #Create a __str__ method returning a string presentation
+    def __str__(self):
+        return "First name: " + self.first_name + ", " + \
+                "Last name: " + self.last_name + ", " + \
+                "Occupation: " + self.occupation + ", " + \
+                "Social link: " + self.social_link
+
 # create a Course model which has a Many-To-Many relationship to Instructor model, defined
 # by the reference field instructors
 # Course model
