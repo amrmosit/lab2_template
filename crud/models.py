@@ -89,7 +89,7 @@ class Enrollment(models.Model):
         (HONOR, 'Honor'),
     ]
 
-    # Many-to_Many relationship to Learner & Course 
+    # One_to_Many  relationship to Learner & Course 
     # Add a learner foreign key
     learner = models.ForeignKey(Learner, on_delete=models.CASCADE)
     # Add a course foreign key
