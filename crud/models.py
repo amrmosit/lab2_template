@@ -46,3 +46,8 @@ class Lesson (models.Model):
     title = models.CharField(null = False, max_length=200, default="title")
     course = models.ForeignKey(Course, null=True, on_delete=models.CASCADE)
     content = models.TimeField()
+
+    # Create a toString method for object string representation
+    def __str__(self):
+        return "Title: " + self.title + "," + \
+            "Content: " + self.content
