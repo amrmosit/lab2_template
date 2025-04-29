@@ -38,3 +38,11 @@ class Course (models.Model):
     def __str__(self):
         return "Name: " + self.name + ", " + \
                 "Description: " + self.description
+
+# create a Lesson model which has a Many-To-One relationship to Course model, defined
+# by course ForeignKey
+# Lesson model
+class Lesson (models.Model):
+    title = models.CharField(null = False, max_length=200, default="title")
+    course = models.ForeignKey(Course, null=True, on_delete=models.CASCADE)
+    content = models.TimeField()
