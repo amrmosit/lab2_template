@@ -55,7 +55,7 @@ class Learner(User):
 # by the reference field instructors
 # Course model
 class Course (models.Model):
-    name = models.CharField(null = False, max_length=30, default='online course')
+    name = models.CharField(null = False, max_length=100, default='online course')
     description = models.CharField(max_length=500)
 
     # Many-to-Many relationship to Instructor Model
@@ -75,7 +75,7 @@ class Course (models.Model):
 class Lesson (models.Model):
     title = models.CharField(null = False, max_length=200, default="title")
     course = models.ForeignKey(Course, null=True, on_delete=models.CASCADE)
-    content = models.TimeField()
+    content = models.TextField()
 
     # Create a toString method for object string representation
     def __str__(self):
