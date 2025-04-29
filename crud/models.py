@@ -61,6 +61,9 @@ class Course (models.Model):
     # Many-to-Many relationship to Instructor Model
     instructors = models.ManyToManyField(Instructor)
 
+    # Many-To-Many relationship with Learner via Enrollment relationship
+    learners = models.ManyToManyField(Learner, through='Enrollment')
+
     # Create a toString method for object string representation
     def __str__(self):
         return "Name: " + self.name + ", " + \
