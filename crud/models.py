@@ -8,7 +8,19 @@ class User (models.Model):
     last_name = models.CharField(null=false, max_length=30, default='doe')
     dob = models.DateField(null=True)
 
-# Create a toString method for object string representation
-def __str__(self):
-    return self.first_name + " " + self.last_name
+    # Create a toString method for object string representation
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+# Adding User Model's Childs
+# Instructor model
+class Instructor (User):
+    full_time = models.BooleanField(default=True)
+    total_learners = models.IntegerField()
 
+    # Create a toString method for object string representation
+    def __str__(self):
+        return "First name: " + self.first_name + ", " + \
+                "Last name: " + self.last_name + ", " + \
+                "Is Full time: " + str(self.self.full_time) + ", " + \
+                "Total learners: " + str(self.total_learners)
+        
